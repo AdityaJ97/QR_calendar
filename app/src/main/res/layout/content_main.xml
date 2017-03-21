@@ -14,7 +14,24 @@
     tools:showIn="@layout/app_bar_main">
 
     <TextView
+        android:text="Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This Is It" />
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="18dp"
+        android:id="@+id/textViewName"
+
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:text="Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:id="@+id/textViewAddress"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="28dp" />
+
+
+
+
 </RelativeLayout>

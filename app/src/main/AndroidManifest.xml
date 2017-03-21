@@ -23,9 +23,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:label="camera"
-            android:name=".camera" >
-        </activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+            android:label="encode"
+            android:name=".encode" >
+        </activity>
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
             android:name="com.google.android.gms.version"

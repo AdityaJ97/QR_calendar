@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_manage) {
-            Intent intent = new Intent(MainActivity.this, camera.class);
+            Intent intent = new Intent(MainActivity.this, encode.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {

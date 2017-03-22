@@ -36,7 +36,7 @@ public class encode extends Activity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.encode);
-        editText= (EditText) findViewById(R.id.edit);
+        editText= (EditText) findViewById(R.id.edit_title);
         imageView = (ImageView)findViewById(R.id.imageView2);
 
     }

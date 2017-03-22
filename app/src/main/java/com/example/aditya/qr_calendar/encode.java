@@ -27,8 +27,8 @@ import java.util.Hashtable;
 
 public class encode extends Activity {
     ImageView imageView;
-    EditText editText;
-    String EditTextValue ;
+    EditText editTitle, editDate;
+    String EditTextValue1, EditTextValue2, EditTextValue ;
     Thread thread ;
     public final static int QRcodeWidth = 500 ;
     Bitmap bitmap ;
@@ -36,17 +36,18 @@ public class encode extends Activity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.encode);
-        editText= (EditText) findViewById(R.id.edit_title);
-        editText= (EditText) findViewById(R.id.edit_date);
+        editTitle = (EditText) findViewById(R.id.edit_title);
+        editDate = (EditText) findViewById(R.id.edit_date);
         imageView = (ImageView)findViewById(R.id.imageView2);
-
     }
 
     public void onClick(View view) {
 
-            EditTextValue = editText.getText().toString();
+            EditTextValue1 = editTitle.getText().toString();
+            EditTextValue1 = editDate.getText().toString();
+            EditTextValue = "{"+"Title" + EditTextValue1 + "Date" + EditTextValue2;
 
-            try {
+        try {
                 bitmap = TextToImageEncode(EditTextValue);
 
                 imageView.setImageBitmap(bitmap);

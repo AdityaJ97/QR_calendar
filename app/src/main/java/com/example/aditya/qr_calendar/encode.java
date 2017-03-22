@@ -44,8 +44,8 @@ public class encode extends Activity {
     public void onClick(View view) {
 
             EditTextValue1 = editTitle.getText().toString();
-            EditTextValue1 = editDate.getText().toString();
-            EditTextValue = "{"+"Title" + EditTextValue1 + "Date" + EditTextValue2;
+            EditTextValue2 = editDate.getText().toString();
+            EditTextValue = "{\"Title\":" + EditTextValue1 + "\",\"Date\":\"" + EditTextValue2 + "\"}";
 
         try {
                 bitmap = TextToImageEncode(EditTextValue);

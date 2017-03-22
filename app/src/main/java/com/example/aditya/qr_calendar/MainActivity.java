@@ -126,8 +126,8 @@ public class MainActivity extends AppCompatActivity
                     //converting the data to json
                     JSONObject obj = new JSONObject(result.getContents());
                     //setting values to textviews
-                    textViewName.setText(obj.getString("name"));
-                    textViewAddress.setText(obj.getString("address"));
+                    textViewName.setText(obj.getString("Title"));
+                    textViewAddress.setText(obj.getString("Date"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                     //if control comes here

@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity
                     //setting values to textviews
                     textViewTitle.setText(obj.getString("Title"));
                     textViewDate.setText(obj.getString("Date"));
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     //if control comes here

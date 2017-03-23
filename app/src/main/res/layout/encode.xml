@@ -3,20 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <EditText android:id="@+id/edit_title"
+    <LinearLayout
+        android:layout_height="55dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="@string/edit_title"
-        android:ems="10"
-        android:layout_weight="0.82" />
+        android:orientation="horizontal"
+        android:weightSum="1">
 
+        <TextView
+            android:text="Title:"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_width="66dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.97" />
 
-    <EditText android:id="@+id/edit_date"
+        <EditText android:id="@+id/edit_title"
+            android:layout_width="274dp"
+            android:layout_height="85dp"
+            android:inputType="textPersonName"
+            android:hint="@string/edit_title"
+            android:ems="10"
+            android:layout_weight="0.57" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="55dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_date" />
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Date:"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_width="108dp"
+            android:layout_height="match_parent" />
+
+
+        <EditText android:id="@+id/edit_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_date" />
+    </LinearLayout>
 
     <Button
         android:text="Encode"

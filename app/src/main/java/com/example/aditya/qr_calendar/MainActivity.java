@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    private TextView textViewName, textViewAddress;
+    private TextView textViewTitle, textViewDate;
     private IntentIntegrator qrScan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         qrScan = new IntentIntegrator(this);
-        textViewName = (TextView) findViewById(R.id.textViewName);
-        textViewAddress = (TextView) findViewById(R.id.textViewAddress);
+        textViewTitle = (TextView) findViewById(R.id.textViewTitle);
+        textViewDate = (TextView) findViewById(R.id.textViewDate);
 
     }
 
@@ -126,8 +126,8 @@ public class MainActivity extends AppCompatActivity
                     //converting the data to json
                     JSONObject obj = new JSONObject(result.getContents());
                     //setting values to textviews
-                    textViewName.setText(obj.getString("Title"));
-                    textViewAddress.setText(obj.getString("Date"));
+                    textViewTitle.setText(obj.getString("Title"));
+                    textViewDate.setText(obj.getString("Date"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                     //if control comes here

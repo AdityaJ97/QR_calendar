@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +29,8 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_scan) {
             qrScan.initiateScan();
 
 
@@ -102,7 +105,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_encode) {
             Intent intent = new Intent(MainActivity.this, encode.class);
             startActivity(intent);
 
@@ -113,6 +116,19 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void saveToCalendar(View sview) {
+        //layout.addView(textView);
+        Intent calendarIntent = new Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI);
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2017, 5, 15, 10, 30);
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(2017, 5, 15, 12, 30);
+        calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis());
+        calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis());
+        calendarIntent.putExtra(CalendarContract.Events.TITLE, "text");
+        calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "Secret dojo");
+        startActivity(calendarIntent);
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);

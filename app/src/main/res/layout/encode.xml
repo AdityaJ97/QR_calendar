@@ -14,15 +14,13 @@
             android:textColor="@color/colorPrimaryDark"
             android:layout_width="66dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.97" />
+            android:gravity="center"/>
 
         <EditText android:id="@+id/edit_title"
-            android:layout_width="274dp"
-            android:layout_height="85dp"
-            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="@string/edit_title"
-            android:ems="10"
-            android:layout_weight="0.57" />
+            android:gravity="center"/>
     </LinearLayout>
     <LinearLayout
         android:layout_height="55dp"
@@ -33,14 +31,16 @@
         <TextView
             android:text="Date:"
             android:textColor="@color/colorPrimaryDark"
-            android:layout_width="108dp"
-            android:layout_height="match_parent" />
+            android:layout_width="66dp"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
 
 
         <EditText android:id="@+id/edit_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/edit_date" />
+            android:hint="@string/edit_date"
+            android:gravity="center"/>
     </LinearLayout>
 
     <Button

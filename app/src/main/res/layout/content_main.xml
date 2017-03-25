@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -12,26 +12,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.aditya.qr_calendar.MainActivity"
-    tools:showIn="@layout/app_bar_main">
-
-    <LinearLayout
-        android:layout_height="55dp"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="1">
-        <TextView
-        android:text="Title:"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="66dp"
-        android:layout_height="match_parent"
-            android:gravity="center"/>
-        <TextView
-            android:text="stringtitlefromscan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewTitle"
-             />
-    </LinearLayout>
+    tools:showIn="@layout/app_bar_main"
+    app:layout_collapseParallaxMultiplier="1.0"
+    android:weightSum="1">
 
     <LinearLayout
         android:layout_height="55dp"
@@ -55,16 +38,41 @@
            />
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:onClick="saveToCalendar"
-        android:layout_marginTop="100dp"
-        android:elevation="0dp"
-        android:id="@+id/button"
+    <LinearLayout
+        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <TextView
+        android:text="Title:"
         android:textColor="@color/colorPrimaryDark"
-        android:background="@color/colorPrimary" />
+        android:layout_width="66dp"
+        android:layout_height="match_parent"
+            android:gravity="center"/>
+        <TextView
+            android:text="stringtitlefromscan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTitle"
+             />
+    </LinearLayout>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Save"
+            android:onClick="saveToCalendar"
+            android:elevation="0dp"
+            android:id="@+id/button"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
+            android:layout_weight="5.59" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/qrcode"
+        android:id="@+id/imageView2"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.aditya.qr_calendar;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -18,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.appindexing.Action;
@@ -35,9 +37,10 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    private static final int ENCODED_IMAGE_REQUEST = 1;
     private TextView textViewTitle, textViewDate;
     private IntentIntegrator qrScan;
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity
         qrScan = new IntentIntegrator(this);
         textViewTitle = (TextView) findViewById(R.id.textViewTitle);
         textViewDate = (TextView) findViewById(R.id.textViewDate);
+        imageView = (ImageView)findViewById(R.id.imageView2);
 
     }
 
@@ -96,25 +100,20 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_scan) {
             qrScan.initiateScan();
 
 
         } else if (id == R.id.nav_gallery) {
-
-
-
         } else if (id == R.id.nav_encode) {
             Intent intent = new Intent(MainActivity.this, encode.class);
-            startActivity(intent);
+            startActivityForResult(intent, ENCODED_IMAGE_REQUEST);
+
 
         } else if (id == R.id.nav_share) {
-
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
     public void saveToCalendar(View sview) {
@@ -132,7 +131,14 @@ public class MainActivity extends AppCompatActivity
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
+        if (resultCode == RESULT_OK && requestCode == ENCODED_IMAGE_REQUEST) {
+            if (data.hasExtra("BitmapImage")) {
+                Intent intent = getIntent();
+                Bitmap bitmap = (Bitmap) intent.getParcelableExtra("BitmapImage");
+                imageView.setImageBitmap(bitmap);
+            }
+        }
+        else if (result != null) {
             //if qrcode has nothing in it
             if (result.getContents() == null) {
                 Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();

@@ -1,6 +1,7 @@
 package com.example.aditya.qr_calendar;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,7 +27,7 @@ import java.util.Hashtable;
  */
 
 public class encode extends Activity {
-    ImageView imageView;
+
     EditText editTitle, editDate;
     String EditTextValue1, EditTextValue2, EditTextValue ;
     Thread thread ;
@@ -38,10 +39,12 @@ public class encode extends Activity {
         setContentView(R.layout.encode);
         editTitle = (EditText) findViewById(R.id.edit_title);
         editDate = (EditText) findViewById(R.id.edit_date);
-        imageView = (ImageView)findViewById(R.id.imageView2);
+
+
     }
 
     public void onClick(View view) {
+
 
             EditTextValue1 = editTitle.getText().toString();
             EditTextValue2 = editDate.getText().toString();
@@ -49,8 +52,10 @@ public class encode extends Activity {
 
         try {
                 bitmap = TextToImageEncode(EditTextValue);
-
-                imageView.setImageBitmap(bitmap);
+            Intent intent = new Intent();
+            intent.putExtra("BitmapImage", bitmap);
+            setResult(RESULT_OK, intent);
+            onBackPressed();
 
             } catch (WriterException e) {
                 e.printStackTrace();
@@ -89,6 +94,7 @@ public class encode extends Activity {
         bitmap.setPixels(pixels, 0, 500, 0, 0, bitMatrixWidth, bitMatrixHeight);
         return bitmap;
     }
+
 }
 
 

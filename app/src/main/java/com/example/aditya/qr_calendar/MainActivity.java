@@ -105,13 +105,22 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
         int id = item.getItemId();
         if (id == R.id.nav_scan) {
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            }
             qrScan.initiateScan();
 
 
         } else if (id == R.id.nav_gallery) {
         } else if (id == R.id.nav_encode) {
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            }
             Intent intent = new Intent(getApplicationContext(), encode.class);
             //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivityForResult(intent, ENCODED_IMAGE_REQUEST);
@@ -137,13 +146,8 @@ public class MainActivity extends AppCompatActivity
         startActivity(calendarIntent);
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == ENCODED_IMAGE_REQUEST) {
-           /* if (data.hasExtra("BitmapImage")) {
-                Intent intent = getIntent();
-                Bitmap bitmap = intent.getParcelableExtra("BitmapImage");
-                imageView.setImageBitmap(bitmap);
-            }*/
             String Title, Date, EditTextValue;
             Title = data.getStringExtra("Title");
             textViewTitle.setText(Title);
@@ -159,13 +163,9 @@ public class MainActivity extends AppCompatActivity
                 e.printStackTrace();
             }
             imageView.setImageBitmap(bitmap);
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-            }
 
         }
-       /* else if (result != null) {
+       else if (result != null) {
             //if qrcode has nothing in it
             if (result.getContents() == null) {
                 Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
-        }*/
+        }
     }
     Bitmap TextToImageEncode(String Value) throws WriterException {
         BitMatrix bitMatrix;

@@ -45,7 +45,6 @@ public class encode extends Activity {
 
             EditTextValue1 = editTitle.getText().toString();
             EditTextValue2 = editDate.getText().toString();
-            EditTextValue = "{\"Title\":" + "\"" + EditTextValue1 + "\"," + "\"Date\":" + "\"" + EditTextValue2 + "\"}";
 
             Intent intent = new Intent();
             intent.putExtra("Title", EditTextValue1);

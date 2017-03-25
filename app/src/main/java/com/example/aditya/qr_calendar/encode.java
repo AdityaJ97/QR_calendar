@@ -30,9 +30,6 @@ public class encode extends Activity {
 
     EditText editTitle, editDate;
     String EditTextValue1, EditTextValue2, EditTextValue ;
-    Thread thread ;
-    public final static int QRcodeWidth = 500 ;
-    Bitmap bitmap ;
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -50,50 +47,15 @@ public class encode extends Activity {
             EditTextValue2 = editDate.getText().toString();
             EditTextValue = "{\"Title\":" + "\"" + EditTextValue1 + "\"," + "\"Date\":" + "\"" + EditTextValue2 + "\"}";
 
-        try {
-                bitmap = TextToImageEncode(EditTextValue);
             Intent intent = new Intent();
-            intent.putExtra("BitmapImage", bitmap);
+            intent.putExtra("Title", EditTextValue1);
+            intent.putExtra("Date", EditTextValue2);
             setResult(RESULT_OK, intent);
-            finishActivityFromChild(this,ENCODED_IMAGE_REQUEST);
+            finish();
 
-            } catch (WriterException e) {
-                e.printStackTrace();
-            }
+
     }
-    Bitmap TextToImageEncode(String Value) throws WriterException {
-        BitMatrix bitMatrix;
-        try {
-            bitMatrix = new MultiFormatWriter().encode(
-                    Value,
-                    BarcodeFormat.DATA_MATRIX.QR_CODE,
-                    QRcodeWidth, QRcodeWidth, null
-            );
 
-        } catch (IllegalArgumentException Illegalargumentexception) {
-
-            return null;
-        }
-        int bitMatrixWidth = bitMatrix.getWidth();
-
-        int bitMatrixHeight = bitMatrix.getHeight();
-
-        int[] pixels = new int[bitMatrixWidth * bitMatrixHeight];
-
-        for (int y = 0; y < bitMatrixHeight; y++) {
-            int offset = y * bitMatrixWidth;
-
-            for (int x = 0; x < bitMatrixWidth; x++) {
-
-                pixels[offset + x] = bitMatrix.get(x, y) ?
-                        Color.BLACK:Color.WHITE;
-            }
-        }
-        Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
-
-        bitmap.setPixels(pixels, 0, 500, 0, 0, bitMatrixWidth, bitMatrixHeight);
-        return bitmap;
-    }
 
 }
 

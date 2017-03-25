@@ -3,6 +3,7 @@ package com.example.aditya.qr_calendar;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -26,6 +27,10 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -40,6 +45,7 @@ public class MainActivity extends AppCompatActivity
     private static final int ENCODED_IMAGE_REQUEST = 1;
     private TextView textViewTitle, textViewDate;
     private IntentIntegrator qrScan;
+    public final static int QRcodeWidth = 500 ;
     ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,9 +112,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_gallery) {
         } else if (id == R.id.nav_encode) {
-            Intent intent = new Intent(MainActivity.this, encode.class);
+            Intent intent = new Intent(getApplicationContext(), encode.class);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivityForResult(intent, ENCODED_IMAGE_REQUEST);
-
+            //startActivity(intent);
 
         } else if (id == R.id.nav_share) {
         }
@@ -130,15 +137,35 @@ public class MainActivity extends AppCompatActivity
         startActivity(calendarIntent);
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        //IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == ENCODED_IMAGE_REQUEST) {
-            if (data.hasExtra("BitmapImage")) {
+           /* if (data.hasExtra("BitmapImage")) {
                 Intent intent = getIntent();
-                Bitmap bitmap = (Bitmap) intent.getParcelableExtra("BitmapImage");
+                Bitmap bitmap = intent.getParcelableExtra("BitmapImage");
                 imageView.setImageBitmap(bitmap);
+            }*/
+            String Title, Date, EditTextValue;
+            Title = data.getStringExtra("Title");
+            textViewTitle.setText(Title);
+            Date = data.getStringExtra("Date");
+            textViewDate.setText(Date);
+
+            EditTextValue = "{\"Title\":" + "\"" + Title + "\"," + "\"Date\":" + "\"" + Date + "\"}";
+            Bitmap bitmap = null;
+            try {
+                bitmap = TextToImageEncode(EditTextValue);
+
+            } catch (WriterException e) {
+                e.printStackTrace();
             }
+            imageView.setImageBitmap(bitmap);
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            }
+
         }
-        else if (result != null) {
+       /* else if (result != null) {
             //if qrcode has nothing in it
             if (result.getContents() == null) {
                 Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
@@ -162,7 +189,40 @@ public class MainActivity extends AppCompatActivity
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
+        }*/
+    }
+    Bitmap TextToImageEncode(String Value) throws WriterException {
+        BitMatrix bitMatrix;
+        try {
+            bitMatrix = new MultiFormatWriter().encode(
+                    Value,
+                    BarcodeFormat.DATA_MATRIX.QR_CODE,
+                    QRcodeWidth, QRcodeWidth, null
+            );
+
+        } catch (IllegalArgumentException Illegalargumentexception) {
+
+            return null;
         }
+        int bitMatrixWidth = bitMatrix.getWidth();
+
+        int bitMatrixHeight = bitMatrix.getHeight();
+
+        int[] pixels = new int[bitMatrixWidth * bitMatrixHeight];
+
+        for (int y = 0; y < bitMatrixHeight; y++) {
+            int offset = y * bitMatrixWidth;
+
+            for (int x = 0; x < bitMatrixWidth; x++) {
+
+                pixels[offset + x] = bitMatrix.get(x, y) ?
+                        Color.BLACK:Color.WHITE;
+            }
+        }
+        Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
+
+        bitmap.setPixels(pixels, 0, 500, 0, 0, bitMatrixWidth, bitMatrixHeight);
+        return bitmap;
     }
 
 

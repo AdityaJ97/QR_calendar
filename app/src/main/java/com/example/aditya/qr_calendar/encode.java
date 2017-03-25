@@ -55,7 +55,7 @@ public class encode extends Activity {
             Intent intent = new Intent();
             intent.putExtra("BitmapImage", bitmap);
             setResult(RESULT_OK, intent);
-            onBackPressed();
+            finishActivityFromChild(this,ENCODED_IMAGE_REQUEST);
 
             } catch (WriterException e) {
                 e.printStackTrace();

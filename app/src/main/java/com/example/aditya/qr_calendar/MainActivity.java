@@ -4,9 +4,12 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.CalendarContract;
+import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
@@ -37,7 +40,13 @@ import com.google.zxing.integration.android.IntentResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
+
+import static android.R.attr.bitmap;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -128,6 +137,32 @@ public class MainActivity extends AppCompatActivity
             //startActivity(intent);
 
         } else if (id == R.id.nav_share) {
+            ImageView image = (ImageView)findViewById(R.id.imageView2);
+            Bitmap bmp = ((BitmapDrawable)image.getDrawable()).getBitmap();
+            File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+            File imageFile = new File(path,"code_image.png");
+
+            try {
+                FileOutputStream fileOutPutStream = new FileOutputStream(imageFile);
+                bmp.compress(Bitmap.CompressFormat.PNG, 80, fileOutPutStream);
+                fileOutPutStream.flush();
+                fileOutPutStream.close();
+            }
+            catch(FileNotFoundException e){
+                e.printStackTrace();
+            }
+            catch( IOException e){
+                e.printStackTrace();
+            }
+
+            Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+            Uri uri = Uri.fromFile(imageFile);
+            intent.setType("image/*");
+            intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
+            intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
+            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            startActivity(Intent.createChooser(intent, "Share Code Image"));
+
         }
 
 
@@ -156,8 +191,7 @@ public class MainActivity extends AppCompatActivity
             textViewTitle.setText(Title);
             Date = data.getStringExtra("Date");
             textViewDate.setText(Date);
-
-            EditTextValue = "{\"Title\":" + "\"" + Title + "\"," + "\"Date\":" + "\"" + Date + "\"}";
+            EditTextValue = data.getStringExtra("Result");
             Bitmap bitmap = null;
             try {
                 bitmap = TextToImageEncode(EditTextValue);

@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final int ENCODED_IMAGE_REQUEST = 1;
+    String Title, Date, EditTextValue;
     private TextView textViewTitle, textViewDate;
     private IntentIntegrator qrScan;
     public final static int QRcodeWidth = 500 ;
@@ -134,6 +135,8 @@ public class MainActivity extends AppCompatActivity
     }
     public void saveToCalendar(View sview) {
         //layout.addView(textView);
+        Title = textViewTitle.getText().toString();
+        Date = textViewDate.getText().toString();
         Intent calendarIntent = new Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI);
         Calendar beginTime = Calendar.getInstance();
         beginTime.set(2017, 5, 15, 10, 30);
@@ -141,14 +144,14 @@ public class MainActivity extends AppCompatActivity
         endTime.set(2017, 5, 15, 12, 30);
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis());
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis());
-        calendarIntent.putExtra(CalendarContract.Events.TITLE, "text");
+        calendarIntent.putExtra(CalendarContract.Events.TITLE, Title);
         calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "Secret dojo");
         startActivity(calendarIntent);
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == ENCODED_IMAGE_REQUEST) {
-            String Title, Date, EditTextValue;
+
             Title = data.getStringExtra("Title");
             textViewTitle.setText(Title);
             Date = data.getStringExtra("Date");

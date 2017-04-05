@@ -44,6 +44,26 @@
             android:gravity="center"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Description"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:layout_width="100dp" />
+
+
+        <EditText android:id="@+id/edit_discription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+    </LinearLayout>
+
     <Button
         android:text="Encode"
         android:layout_width="match_parent"

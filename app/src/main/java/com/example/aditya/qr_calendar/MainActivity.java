@@ -44,7 +44,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import static android.R.attr.bitmap;
 
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final int ENCODED_IMAGE_REQUEST = 1;
-    String Title, Date, EditTextValue;
+    String Titlestr, Datestr, EditTextValue;
     private TextView textViewTitle, textViewDate;
     private IntentIntegrator qrScan;
     public final static int QRcodeWidth = 500 ;
@@ -170,8 +173,10 @@ public class MainActivity extends AppCompatActivity
     }
     public void saveToCalendar(View sview) {
         //layout.addView(textView);
-        Title = textViewTitle.getText().toString();
-        Date = textViewDate.getText().toString();
+        Titlestr = textViewTitle.getText().toString();
+        Datestr = textViewDate.getText().toString();
+        //DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+        //Date date = formatter.parse(Datestr);
         Intent calendarIntent = new Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI);
         Calendar beginTime = Calendar.getInstance();
         beginTime.set(2017, 5, 15, 10, 30);
@@ -179,7 +184,7 @@ public class MainActivity extends AppCompatActivity
         endTime.set(2017, 5, 15, 12, 30);
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis());
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis());
-        calendarIntent.putExtra(CalendarContract.Events.TITLE, Title);
+        calendarIntent.putExtra(CalendarContract.Events.TITLE, Titlestr);
         calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "Secret dojo");
         startActivity(calendarIntent);
     }
@@ -187,10 +192,10 @@ public class MainActivity extends AppCompatActivity
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == ENCODED_IMAGE_REQUEST) {
 
-            Title = data.getStringExtra("Title");
-            textViewTitle.setText(Title);
-            Date = data.getStringExtra("Date");
-            textViewDate.setText(Date);
+            Titlestr = data.getStringExtra("Title");
+            textViewTitle.setText(Titlestr);
+            Datestr = data.getStringExtra("Date");
+            textViewDate.setText(Datestr);
             EditTextValue = data.getStringExtra("Result");
             Bitmap bitmap = null;
             try {

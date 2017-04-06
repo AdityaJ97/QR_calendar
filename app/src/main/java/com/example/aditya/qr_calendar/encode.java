@@ -32,7 +32,7 @@ import java.util.Hashtable;
 
 public class encode extends Activity {
 
-    EditText editTitle, editLocation;
+    EditText editTitle, editLocation, editDescription;
     String EditTextValue1, EditTextValue2, EditTextValue3, EditTextValue4, EditTextValue5, EditTextValue6, EditTextValue ;
     private TimePicker timePicker1, timePicker2;
     private int day, month, year;
@@ -44,6 +44,7 @@ public class encode extends Activity {
         setContentView(R.layout.encode);
         editTitle = (EditText) findViewById(R.id.edit_title);
         editLocation = (EditText) findViewById(R.id.edit_location);
+        editDescription = (EditText) findViewById(R.id.edit_description);
         timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
         timePicker2 = (TimePicker) findViewById(R.id.timePicker2);
         timePicker1.setIs24HourView(true);
@@ -61,25 +62,23 @@ public class encode extends Activity {
         EditTextValue1 = editTitle.getText().toString();
         EditTextValue2 = editLocation.getText().toString();
         EditTextValue3 = (day)+("/")+(month + 1)+("/")+(year)+(" ");
+        EditTextValue4 = c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) +  ":" + c.get(Calendar.SECOND);
+        EditTextValue6 = editDescription.getText().toString();
+
+
+
         EditTextValue = "{\"Title\":" + "\"" + EditTextValue1 + "\"," + "\"Location\":" + "\"" +
                 EditTextValue2 + "\"}" + "{\"Date\":" + "\"" + EditTextValue3 + "\"," + "{\"Starttime\":" +
                 "\"" + EditTextValue4 + "\"," + "{\"Endtime\":" + "\"" + EditTextValue5 + "\"," +
                 "{\"Description\":" + "\"" + EditTextValue6 + "\"";
 
-        Intent intent = new Intent();
+       Intent intent = new Intent();
             intent.putExtra("Title", EditTextValue1);
             intent.putExtra("Location", EditTextValue2);
         intent.putExtra("Result", EditTextValue);
             setResult(RESULT_OK, intent);
             finish();
-
-
     }
-
-
-
-
-
 }
 
 

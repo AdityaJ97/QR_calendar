@@ -34,7 +34,7 @@
         android:gravity="center"/>
 
         <TextView
-            android:text="Stringdatefromscan"
+            android:hint="dd/MM/YY"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewDate"
@@ -53,7 +53,7 @@
         android:layout_height="match_parent"
             android:gravity="center"/>
         <TextView
-            android:text="stringtitlefromscan"
+            android:hint="stringtitlefromscan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewTitle"
@@ -72,7 +72,7 @@
             android:layout_height="match_parent"
             android:gravity="center"/>
         <TextView
-            android:text="stringlocationfromscan"
+            android:hint="stringlocationfromscan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewLocation"
@@ -85,18 +85,60 @@
         android:orientation="horizontal"
         android:weightSum="1">
         <TextView
-            android:text="Description:"
+            android:text="Starttime:"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewStarttime"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <TextView
+            android:text="Endtime:"
             android:textColor="@color/colorPrimaryDark"
             android:layout_width="66dp"
             android:layout_height="match_parent"
             android:gravity="center"/>
         <TextView
-            android:text="stringdiscriptionfromscan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewEndtime"
+            />
+    </LinearLayout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ScrollView03"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <LinearLayout
+        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <TextView
+            android:text="Description:"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_width="88dp"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+        <TextView
+            android:hint="stringdiscriptionfromscan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewDescription"
             />
     </LinearLayout>
+    </ScrollView>
+
+
 
         <Button
             android:layout_width="match_parent"

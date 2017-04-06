@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final int ENCODED_IMAGE_REQUEST = 1;
-    String Titlestr, Datestr, Locationstr, Descriptionstr, EditTextValue;
-    private TextView textViewTitle, textViewDate, textViewLocation, textViewDescription;
+    String Titlestr, Datestr, Locationstr, Descriptionstr, Starttimestr, Endtimestr, EditTextValue;
+    private TextView textViewTitle, textViewDate, textViewLocation, textViewDescription, textViewStarttime, textViewEndtime;
     private IntentIntegrator qrScan;
     public final static int QRcodeWidth = 500 ;
     ImageView imageView;
@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity
         textViewDate = (TextView) findViewById(R.id.textViewDate);
         textViewLocation = (TextView) findViewById(R.id.textViewLocation);
         textViewDescription = (TextView) findViewById(R.id.textViewDescription);
+        textViewStarttime = (TextView) findViewById(R.id.textViewStarttime);
+        textViewEndtime= (TextView) findViewById(R.id.textViewEndtime);
         imageView = (ImageView)findViewById(R.id.imageView2);
 
     }
@@ -207,6 +209,10 @@ public class MainActivity extends AppCompatActivity
             textViewLocation.setText(Locationstr);
             Descriptionstr = data.getStringExtra("Description");
             textViewDescription.setText(Descriptionstr);
+            Starttimestr = data.getStringExtra("Starttime");
+            textViewStarttime.setText(Starttimestr);
+            Endtimestr = data.getStringExtra("Endtime");
+            textViewEndtime.setText(Endtimestr);
 
 
 

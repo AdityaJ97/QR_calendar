@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity
                     JSONObject obj = new JSONObject(result.getContents());
                     //setting values to textviews
                     textViewTitle.setText(obj.getString("Title"));
-                    textViewDate.setText(obj.getString("Date"));
+                    textViewDate.setText(obj.getString("Location"));
 
                 } catch (JSONException e) {
                     e.printStackTrace();

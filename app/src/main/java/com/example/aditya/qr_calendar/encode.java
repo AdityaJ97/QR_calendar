@@ -62,9 +62,9 @@ public class encode extends Activity {
         EditTextValue2 = editLocation.getText().toString();
         EditTextValue3 = (day)+("/")+(month + 1)+("/")+(year)+(" ");
         EditTextValue = "{\"Title\":" + "\"" + EditTextValue1 + "\"," + "\"Location\":" + "\"" +
-                EditTextValue2 + "\"}" + "{\"Date\":" + "\"" + EditTextValue3 + "\",";/* + "{\"Starttime\":" +
+                EditTextValue2 + "\"}" + "{\"Date\":" + "\"" + EditTextValue3 + "\"";/* + "{\"Starttime\":" +
                 "\"" + EditTextValue4 + "\"," + "{\"Endtime\":" + "\"" + EditTextValue5 + "\"," +
-                "{\"Description\":" + "\"" + EditTextValue6 + "\",";*/
+                "{\"Description\":" + "\"" + EditTextValue6 + "\"";*/
 
         Intent intent = new Intent();
             intent.putExtra("Title", EditTextValue1);

@@ -45,6 +45,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -55,8 +56,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final int ENCODED_IMAGE_REQUEST = 1;
-    String Titlestr, Datestr, EditTextValue;
-    private TextView textViewTitle, textViewDate;
+    String Titlestr, Datestr, Locationstr, EditTextValue;
+    private TextView textViewTitle, textViewDate, textViewLocation;
     private IntentIntegrator qrScan;
     public final static int QRcodeWidth = 500 ;
     ImageView imageView;
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity
         qrScan = new IntentIntegrator(this);
         textViewTitle = (TextView) findViewById(R.id.textViewTitle);
         textViewDate = (TextView) findViewById(R.id.textViewDate);
+        textViewLocation = (TextView) findViewById(R.id.textViewLocation);
         imageView = (ImageView)findViewById(R.id.imageView2);
 
     }
@@ -175,8 +177,12 @@ public class MainActivity extends AppCompatActivity
         //layout.addView(textView);
         Titlestr = textViewTitle.getText().toString();
         Datestr = textViewDate.getText().toString();
-        //DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
-        //Date date = formatter.parse(Datestr);
+       /* SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/YY");
+        try {
+            Date date = fmt.parse(Datestr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }*/
         Intent calendarIntent = new Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI);
         Calendar beginTime = Calendar.getInstance();
         beginTime.set(2017, 5, 15, 10, 30);
@@ -196,6 +202,8 @@ public class MainActivity extends AppCompatActivity
             textViewTitle.setText(Titlestr);
             Datestr = data.getStringExtra("Date");
             textViewDate.setText(Datestr);
+            Locationstr = data.getStringExtra("Location");
+            textViewLocation.setText(Locationstr);
             EditTextValue = data.getStringExtra("Result");
             Bitmap bitmap = null;
             try {

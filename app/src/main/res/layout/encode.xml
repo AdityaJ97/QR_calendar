@@ -59,11 +59,6 @@
             android:textColor="@color/colorPrimaryDark"
             android:layout_height="match_parent"
             android:gravity="top"
-            android:scrollHorizontally="false"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical"
-            android:overScrollMode="always"
             android:layout_width="100dp" />
 
 
@@ -78,13 +73,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/timePicker" />
 
-
     <Button
         android:text="Encode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:onClick="onClick"/>
+
+
 
 </LinearLayout>
 </ScrollView>

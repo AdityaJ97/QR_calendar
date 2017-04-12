@@ -180,6 +180,8 @@ public class MainActivity extends AppCompatActivity
         //layout.addView(textView);
         Titlestr = textViewTitle.getText().toString();
         Datestr = textViewDate.getText().toString();
+        Locationstr = textViewLocation.getText().toString();
+        Descriptionstr = textViewDescription.getText().toString();
        /* SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/YY");
         try {
             Date date = fmt.parse(Datestr);
@@ -194,7 +196,8 @@ public class MainActivity extends AppCompatActivity
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis());
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis());
         calendarIntent.putExtra(CalendarContract.Events.TITLE, Titlestr);
-        calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "Secret dojo");
+        calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, Locationstr);
+        calendarIntent.putExtra(CalendarContract.Events.DESCRIPTION, Descriptionstr);
         startActivity(calendarIntent);
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

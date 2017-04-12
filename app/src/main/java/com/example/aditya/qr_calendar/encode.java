@@ -55,10 +55,9 @@ public class encode extends Activity {
     }
 
     public void onClick(View view) {
-        final Calendar c = Calendar.getInstance();
-        year = c.get(Calendar.YEAR);
-        month = c.get(Calendar.MONTH);
-        day = c.get(Calendar.DAY_OF_MONTH);
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year = datePicker.getYear();
 
         EditTextValue1 = editTitle.getText().toString();
         EditTextValue2 = editLocation.getText().toString();

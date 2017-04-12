@@ -35,7 +35,7 @@ public class encode extends Activity {
     EditText editTitle, editLocation, editDescription;
     String EditTextValue1, EditTextValue2, EditTextValue3, EditTextValue4, EditTextValue5, EditTextValue6, EditTextValue ;
     private TimePicker timePicker1, timePicker2;
-    private int day, month, year, hour1, hour2, min1, min2;
+    private int day, month, year;
     private DatePicker datePicker;
 
     @Override
@@ -55,8 +55,10 @@ public class encode extends Activity {
     }
 
     public void onClick(View view) {
-
-
+        final Calendar c = Calendar.getInstance();
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
 
         EditTextValue1 = editTitle.getText().toString();
         EditTextValue2 = editLocation.getText().toString();
@@ -68,13 +70,13 @@ public class encode extends Activity {
                 "\"Description\":" + "\"" + EditTextValue6 + "\"}";
 
         Intent intent = new Intent();
-        intent.putExtra("Title", EditTextValue1);
-        intent.putExtra("Location", EditTextValue2);
-        intent.putExtra("Date", EditTextValue3);
+            intent.putExtra("Title", EditTextValue1);
+            intent.putExtra("Location", EditTextValue2);
+            intent.putExtra("Date", EditTextValue3);
         intent.putExtra("Description", EditTextValue6);
         intent.putExtra("Result", EditTextValue);
-        setResult(RESULT_OK, intent);
-        finish();
+            setResult(RESULT_OK, intent);
+            finish();
 
 
     }

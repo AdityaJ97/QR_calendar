@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity
         Titlestr = textViewTitle.getText().toString();
         Datestr = textViewDate.getText().toString();
         Locationstr = textViewLocation.getText().toString();
-        Descriptionstr = textViewDescription.getText().toString();
+    //    Descriptionstr = textViewDescription.getText().toString();
        /* SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/YY");
         try {
             Date date = fmt.parse(Datestr);

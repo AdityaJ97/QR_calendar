@@ -188,11 +188,22 @@ public class MainActivity extends AppCompatActivity
         } catch (ParseException e) {
             e.printStackTrace();
         }*/
+        Datestr = Datestr.split(" ") [0];
+        int day1, month1, year1, day2, month2, year2;
+        day1 = Integer.parseInt( Datestr.split("/")[0] );
+        month1 = Integer.parseInt( Datestr.split("/")[1] );
+        year1 = Integer.parseInt( Datestr.split("/")[2] );
+        //  day1 = 24;
+       // month1 = 5;
+        //year1 = 2017;
+        day2 = day1;
+        month2 = month1;
+        year2 = year1;
         Intent calendarIntent = new Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI);
         Calendar beginTime = Calendar.getInstance();
-        beginTime.set(2017, 5, 15, 10, 30);
+        beginTime.set(year1, month1 - 1, day1, 10, 30);
         Calendar endTime = Calendar.getInstance();
-        endTime.set(2017, 5, 15, 12, 30);
+        endTime.set(year2, month2 - 1, day2, 12, 30);
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis());
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis());
         calendarIntent.putExtra(CalendarContract.Events.TITLE, Titlestr);

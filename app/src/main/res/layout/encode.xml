@@ -127,9 +127,11 @@
         android:text="Encode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="10dp"
+        android:background="@android:color/holo_blue_dark"
         android:id="@+id/button"
         android:onClick="onClick"/>
-
 
 </LinearLayout>
 </ScrollView>

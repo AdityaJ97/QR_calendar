@@ -59,6 +59,10 @@ public class encode extends Activity {
         int month = datePicker.getMonth();
         int year = datePicker.getYear();
 
+       // timePicker1.clearFocus();
+      //  int hour = timePicker1.getHour();
+       // int minute = timePicker1.getMinute();
+
         EditTextValue1 = editTitle.getText().toString();
         EditTextValue2 = editLocation.getText().toString();
         EditTextValue6 = editDescription.getText().toString();
@@ -69,13 +73,13 @@ public class encode extends Activity {
                 "\"Description\":" + "\"" + EditTextValue6 + "\"}";
 
         Intent intent = new Intent();
-            intent.putExtra("Title", EditTextValue1);
-            intent.putExtra("Location", EditTextValue2);
-            intent.putExtra("Date", EditTextValue3);
+        intent.putExtra("Title", EditTextValue1);
+        intent.putExtra("Location", EditTextValue2);
+        intent.putExtra("Date", EditTextValue3);
         intent.putExtra("Description", EditTextValue6);
         intent.putExtra("Result", EditTextValue);
-            setResult(RESULT_OK, intent);
-            finish();
+        setResult(RESULT_OK, intent);
+        finish();
 
 
     }

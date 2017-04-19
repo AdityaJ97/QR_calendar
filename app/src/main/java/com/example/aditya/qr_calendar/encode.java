@@ -36,7 +36,7 @@ public class encode extends Activity {
     String EditTextValue1, EditTextValue2, EditTextValue3, EditTextValue4, EditTextValue5, EditTextValue6, EditTextValue ;
     private TimePicker timePicker1, timePicker2;
     private int day, month, year;
-    private DatePicker datePicker;
+    private CustomDatePicker datePicker;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -50,7 +50,7 @@ public class encode extends Activity {
         timePicker2 = (TimePicker) findViewById(R.id.timePicker2);
         timePicker1.setIs24HourView(true);
         timePicker2.setIs24HourView(true);
-        datePicker = (DatePicker) findViewById(R.id.datePicker);
+        datePicker = (CustomDatePicker) findViewById(R.id.datePicker);
 
     }
 

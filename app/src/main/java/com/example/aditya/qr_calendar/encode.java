@@ -63,6 +63,11 @@ public class encode extends Activity {
       //  int hour = timePicker1.getHour();
        // int minute = timePicker1.getMinute();
 
+
+
+
+
+
         EditTextValue1 = editTitle.getText().toString();
         EditTextValue2 = editLocation.getText().toString();
         EditTextValue6 = editDescription.getText().toString();
@@ -83,6 +88,7 @@ public class encode extends Activity {
 
 
     }
+
 
 
 

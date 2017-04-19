@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity
                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
                 Reader reader = new MultiFormatReader();
                 Result result = reader.decode(bitmap);
-                JSONObject obj = new JSONObject(result.getResultMetadata());
+                JSONObject obj = new JSONObject(result.getText());
                 //setting values to textviews
                 textViewTitle.setText(obj.getString("Title"));
                 textViewDate.setText(obj.getString("Date"));

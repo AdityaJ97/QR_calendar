@@ -3,6 +3,7 @@ package com.example.aditya.qr_calendar;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -31,9 +32,19 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.ChecksumException;
+import com.google.zxing.FormatException;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
 import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.Reader;
+import com.google.zxing.Result;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -41,6 +52,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -85,10 +97,60 @@ public class MainActivity extends AppCompatActivity
         textViewStarttime = (TextView) findViewById(R.id.textViewStarttime);
         textViewEndtime= (TextView) findViewById(R.id.textViewEndtime);
         imageView = (ImageView)findViewById(R.id.imageView2);
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.startsWith("image/*")) {
+                handleSendImage(intent);
+            }
+        }
 
     }
 
-    @Override
+
+
+    private void handleSendImage(Intent intent) {
+        Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        if (imageUri != null) {
+            try {
+                Bitmap bmap = BitmapFactory.decodeStream(new FileInputStream(imageUri.getPath()));
+                int width = bmap.getWidth(), height = bmap.getHeight();
+                int[] pixels = new int[width * height];
+                bmap.getPixels(pixels, 0, width, 0, 0, width, height);
+                bmap.recycle();
+
+                LuminanceSource source = new RGBLuminanceSource(width,height,pixels);
+                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+                Reader reader = new MultiFormatReader();
+                Result result = reader.decode(bitmap);
+                JSONObject obj = new JSONObject(result.getResultMetadata());
+                //setting values to textviews
+                textViewTitle.setText(obj.getString("Title"));
+                textViewDate.setText(obj.getString("Date"));
+                textViewLocation.setText(obj.getString("Location"));
+                textViewDescription.setText(obj.getString("Description"));
+            }
+            catch (NotFoundException e){
+                e.printStackTrace();
+            }
+            catch (ChecksumException e){
+                e.printStackTrace();
+            }
+            catch (FileNotFoundException e){
+                e.printStackTrace();
+            }
+            catch (FormatException e){
+                e.printStackTrace();
+            }
+            catch (JSONException e) {
+                e.printStackTrace();
+                //Toast.makeText(this, result.getText(), Toast.LENGTH_LONG).show();
+            }
+        }
+
+    }
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {

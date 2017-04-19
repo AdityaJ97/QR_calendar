@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ScrollView02"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -25,6 +22,25 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:weightSum="1">
+        <TextView
+            android:text="Title:"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_width="66dp"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+        <TextView
+            android:hint="stringtitlefromscan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTitle"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
     <TextView
         android:text="Date:"
@@ -35,36 +51,10 @@
 
         <TextView
             android:hint="dd/MM/YYYY"
-            android:layout_width="match_parent"
+            android:layout_width="101dp"
             android:layout_height="wrap_content"
             android:id="@+id/textViewDate"
            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_height="55dp"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="1">
-        <TextView
-        android:text="Title:"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="66dp"
-        android:layout_height="match_parent"
-            android:gravity="center"/>
-        <TextView
-            android:hint="stringtitlefromscan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewTitle"
-             />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_height="55dp"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="1">
         <TextView
             android:text="Location:"
             android:textColor="@color/colorPrimaryDark"
@@ -79,6 +69,8 @@
             />
     </LinearLayout>
 
+
+
     <LinearLayout
         android:layout_height="55dp"
         android:layout_width="match_parent"
@@ -87,21 +79,14 @@
         <TextView
             android:text="Starttime:"
             android:textColor="@color/colorPrimaryDark"
-            android:layout_width="73dp"
+            android:layout_width="66dp"
             android:layout_height="match_parent"
             android:gravity="center"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="101dp"
             android:layout_height="wrap_content"
             android:id="@+id/textViewStarttime"
             />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_height="55dp"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="1">
         <TextView
             android:text="Endtime:"
             android:textColor="@color/colorPrimaryDark"
@@ -114,6 +99,7 @@
             android:id="@+id/textViewEndtime"
             />
     </LinearLayout>
+
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/ScrollView03"
         android:layout_width="fill_parent"
@@ -158,4 +144,3 @@
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
-</ScrollView>

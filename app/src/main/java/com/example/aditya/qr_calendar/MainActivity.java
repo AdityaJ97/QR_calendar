@@ -131,6 +131,8 @@ public class MainActivity extends AppCompatActivity
                 textViewDate.setText(obj.getString("Date"));
                 textViewLocation.setText(obj.getString("Location"));
                 textViewDescription.setText(obj.getString("Description"));
+                textViewStarttime.setText(obj.getString("Start"));
+                textViewEndtime.setText(obj.getString("End"));
             }
             catch (NotFoundException e){
                 e.printStackTrace();
@@ -274,22 +276,22 @@ public class MainActivity extends AppCompatActivity
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == ENCODED_IMAGE_REQUEST) {
 
-            Titlestr = data.getStringExtra("Title");
-            textViewTitle.setText(Titlestr);
-            Datestr = data.getStringExtra("Date");
-            textViewDate.setText(Datestr);
-            Locationstr = data.getStringExtra("Location");
-            textViewLocation.setText(Locationstr);
-            Descriptionstr = data.getStringExtra("Description");
-            textViewDescription.setText(Descriptionstr);
-            Starttimestr = data.getStringExtra("Starttime");
-            textViewStarttime.setText(Starttimestr);
-            Endtimestr = data.getStringExtra("Endtime");
-            textViewEndtime.setText(Endtimestr);
-
-
 
             EditTextValue = data.getStringExtra("Result");
+            try {
+                JSONObject obj = new JSONObject(EditTextValue);
+                //setting values to textviews
+                textViewTitle.setText(obj.getString("Title"));
+                textViewDate.setText(obj.getString("Date"));
+                textViewLocation.setText(obj.getString("Location"));
+                textViewDescription.setText(obj.getString("Description"));
+                textViewStarttime.setText(obj.getString("Start"));
+                textViewEndtime.setText(obj.getString("End"));
+            }
+            catch (JSONException e) {
+                e.printStackTrace();
+                //Toast.makeText(this, result.getText(), Toast.LENGTH_LONG).show();
+            }
 
             Bitmap bitmap = null;
             try {
@@ -298,6 +300,7 @@ public class MainActivity extends AppCompatActivity
             } catch (WriterException e) {
                 e.printStackTrace();
             }
+
             imageView.setImageBitmap(bitmap);
 
         }
@@ -315,6 +318,8 @@ public class MainActivity extends AppCompatActivity
                     textViewDate.setText(obj.getString("Date"));
                     textViewLocation.setText(obj.getString("Location"));
                     textViewDescription.setText(obj.getString("Description"));
+                    textViewStarttime.setText(obj.getString("Start"));
+                    textViewEndtime.setText(obj.getString("End"));
 
                 } catch (JSONException e) {
                     e.printStackTrace();

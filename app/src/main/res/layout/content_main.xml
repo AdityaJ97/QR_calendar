@@ -126,7 +126,7 @@
             android:elevation="0dp"
             android:id="@+id/button"
             android:textColor="@android:color/white"
-            android:background="@color/colorPrimary" />
+            android:background="@color/colorPrimaryDark" />
 
     <ImageView
         android:layout_width="match_parent"

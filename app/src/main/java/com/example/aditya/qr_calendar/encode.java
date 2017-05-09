@@ -90,8 +90,14 @@ public class encode extends Activity {
         EditTextValue2 = editLocation.getText().toString();
         EditTextValue6 = editDescription.getText().toString();
         EditTextValue3 = (day)+("/")+(month + 1)+("/")+(year)+(" ");
-        EditTextValue4 = (hour1) + (":") + (minute1);
-        EditTextValue5 = (hour2) + (":") + (minute2);
+        if (minute1 < 10)
+            EditTextValue4 = (hour1) + (":0") + (minute1);
+        else
+            EditTextValue4 = (hour1) + (":") + (minute1);
+        if (minute2 < 10)
+            EditTextValue5 = (hour2) + (":0") + (minute2);
+        else
+            EditTextValue5 = (hour2) + (":") + (minute2);
         EditTextValue = "{\"Title\":" + "\"" + EditTextValue1 + "\"," + "\"Location\":" + "\"" +
                 EditTextValue2 + "\"," + "\"Date\":" + "\"" + EditTextValue3 + "\"," + "\"Start\":" +
                 "\"" + EditTextValue4 + "\"," + "\"End\":" + "\"" + EditTextValue5 + "\"," +

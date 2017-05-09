@@ -246,6 +246,8 @@ public class MainActivity extends AppCompatActivity
         Datestr = textViewDate.getText().toString();
         Locationstr = textViewLocation.getText().toString();
         Descriptionstr = textViewDescription.getText().toString();
+        Starttimestr = textViewStarttime.getText().toString();
+        Endtimestr = textViewEndtime.getText().toString();
        /* SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/YY");
         try {
             Date date = fmt.parse(Datestr);
@@ -253,18 +255,24 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }*/
         Datestr = Datestr.split(" ") [0];
-        int day1, month1, year1, day2, month2, year2;
+        int day1, month1, year1;
         day1 = Integer.parseInt( Datestr.split("/")[0] );
         month1 = Integer.parseInt( Datestr.split("/")[1] );
         year1 = Integer.parseInt( Datestr.split("/")[2] );
-        //  day1 = 24;
-       // month1 = 5;
-        //year1 = 2017;
+
+        Starttimestr = Starttimestr.split(" ") [0];
+        int hour1 = Integer.parseInt(Starttimestr.split(":")[0]);
+        int min1 = Integer.parseInt(Starttimestr.split(":")[1]);
+
+        Endtimestr = Endtimestr.split(" ") [0];
+        int hour2 = Integer.parseInt(Endtimestr.split(":")[0]);
+        int min2 = Integer.parseInt(Endtimestr.split(":")[1]);
+
         Intent calendarIntent = new Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI);
         Calendar beginTime = Calendar.getInstance();
-        beginTime.set(year1, month1 - 1, day1, 10, 30);
+        beginTime.set(year1, month1 - 1, day1, hour1, min1);
         Calendar endTime = Calendar.getInstance();
-        endTime.set(year1, month1 - 1, day1, 12, 30);
+        endTime.set(year1, month1 - 1, day1, hour2, min2);
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis());
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis());
         calendarIntent.putExtra(CalendarContract.Events.TITLE, Titlestr);

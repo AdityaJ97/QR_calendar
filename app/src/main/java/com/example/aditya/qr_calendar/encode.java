@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -57,9 +58,10 @@ public class encode extends Activity {
     }
 
     public void onClick(View view) {
-        int day = datePicker.getDayOfMonth();
-        int month = datePicker.getMonth();
-        int year = datePicker.getYear();
+        int day, month, year;
+        day = datePicker.getDayOfMonth();
+        month = datePicker.getMonth();
+        year = datePicker.getYear();
         if (Build.VERSION.SDK_INT >= 23 )
             hour1 = timePicker1.getHour();
         else
@@ -80,15 +82,14 @@ public class encode extends Activity {
        // timePicker1.clearFocus();
       //  int hour = timePicker1.getHour();
        // int minute = timePicker1.getMinute();
-
-
-
-
-
-
         EditTextValue1 = editTitle.getText().toString();
         EditTextValue2 = editLocation.getText().toString();
         EditTextValue6 = editDescription.getText().toString();
+        if(EditTextValue3 == null) {
+            day = 11;
+            month = 4;
+            year = 2017;
+        }
         EditTextValue3 = (day)+("/")+(month + 1)+("/")+(year)+(" ");
         if (minute1 < 10)
             EditTextValue4 = (hour1) + (":0") + (minute1);

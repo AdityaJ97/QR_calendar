@@ -28,6 +28,7 @@
             android:layout_height="match_parent"
             android:gravity="center"/>
         <TextView
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewTitle"
@@ -75,7 +76,7 @@
         <TextView
             android:text="Starttime:"
             android:textColor="@color/colorPrimaryDark"
-            android:layout_width="66dp"
+            android:layout_width="72dp"
             android:layout_height="match_parent"
             android:gravity="center"/>
         <TextView
@@ -97,7 +98,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_height="55dp"
+        android:layout_height="99dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:weightSum="1">
@@ -106,7 +107,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:layout_width="88dp"
             android:layout_height="match_parent"
-            android:gravity="center"/>
+            android:gravity="top"/>
         <TextView
 
             android:layout_width="match_parent"
@@ -131,7 +132,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="249dp"
-        android:src="@drawable/qrcode"
+        android:src="@drawable/ic_launcher"
         android:id="@+id/imageView2"
         android:layout_gravity="center_horizontal" />
 

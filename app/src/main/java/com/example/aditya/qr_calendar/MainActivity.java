@@ -198,7 +198,6 @@ public class MainActivity extends AppCompatActivity
             qrScan.initiateScan();
 
 
-        } else if (id == R.id.nav_gallery) {
         } else if (id == R.id.nav_encode) {
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);

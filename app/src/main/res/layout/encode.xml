@@ -3,140 +3,140 @@
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <LinearLayout
+        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:weightSum="1">
-        <LinearLayout
-            android:layout_height="55dp"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="1">
 
-            <TextView
-                android:text="Title:"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_width="66dp"
-                android:layout_height="match_parent"
-                android:gravity="center"/>
-
-            <EditText android:id="@+id/edit_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/edit_title"
-                android:gravity="center"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_height="55dp"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <TextView
-                android:text="Location: "
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_width="66dp"
-                android:layout_height="match_parent"
-                android:gravity="center"/>
-
-
-            <EditText android:id="@+id/edit_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"/>
-
-        </LinearLayout>
         <TextView
-            android:text="Select Date: "
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_width="132dp"
+            android:text="Title:"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="66dp"
             android:layout_height="match_parent"
             android:gravity="center"/>
-        <com.example.aditya.qr_calendar.CustomDatePicker
-            android:layout_gravity="center"
-            android:layout_width="255dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/datePicker"
-            android:scaleY="0.8"
-            android:headerBackground="@color/colorPrimaryDark"/>
 
-        <LinearLayout
-            android:layout_width="380dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:text="Start time: "
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_height="match_parent"
-                android:gravity="top"
-                android:layout_width="200dp" />
-            <TextView
-                android:text="End time: "
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_height="match_parent"
-                android:gravity="top"
-                android:layout_width="100dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="380dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TimePicker
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:scaleY="0.8"
-                android:scaleX="0.6"
-                android:timePickerMode="spinner"
-                android:id="@+id/timePicker1" />
-
-            <TimePicker
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:scaleY="0.8"
-                android:scaleX="0.6"
-                android:timePickerMode="spinner"
-                android:id="@+id/timePicker2" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="200dp"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <TextView
-                android:text="Description: "
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_height="match_parent"
-                android:gravity="top"
-                android:layout_width="100dp" />
-
-
-            <EditText android:id="@+id/edit_description"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollHorizontally="false"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:scrollbarStyle="insideInset"
-                android:scrollbars="vertical"
-                android:overScrollMode="always"
-                android:gravity="top"/>
-        </LinearLayout>
-
-        <Button
-            android:text="Encode"
+        <EditText android:id="@+id/edit_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="10dp"
-            android:background="@android:color/holo_blue_dark"
-            android:id="@+id/button"
-            android:onClick="onClick"/>
+            android:hint="@string/edit_title"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Location: "
+            android:textColor="@color/colorPrimary"
+            android:layout_width="66dp"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+
+
+        <EditText android:id="@+id/edit_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
     </LinearLayout>
+    <TextView
+        android:text="Select Date: "
+        android:textColor="@color/colorPrimary"
+        android:layout_width="132dp"
+        android:layout_height="match_parent"
+        android:gravity="center"/>
+    <com.example.aditya.qr_calendar.CustomDatePicker
+        android:layout_gravity="center"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/datePicker"
+        android:scaleY="0.8"
+        android:headerBackground="@color/colorPrimary"/>
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="Start time: "
+            android:textColor="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:layout_width="200dp" />
+        <TextView
+            android:text="End time: "
+            android:textColor="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:layout_width="100dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TimePicker
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:scaleY="0.8"
+            android:scaleX="0.6"
+            android:timePickerMode="spinner"
+            android:id="@+id/timePicker1" />
+
+        <TimePicker
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:scaleY="0.8"
+            android:scaleX="0.6"
+            android:timePickerMode="spinner"
+            android:id="@+id/timePicker2" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Description: "
+            android:textColor="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:layout_width="100dp" />
+
+
+        <EditText android:id="@+id/edit_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollHorizontally="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:overScrollMode="always"
+            android:gravity="top"/>
+    </LinearLayout>
+
+    <Button
+        android:text="Encode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="10dp"
+        android:background="@color/colorPrimary"
+        android:id="@+id/button"
+        android:onClick="onClick"/>
+
+</LinearLayout>
 </ScrollView>

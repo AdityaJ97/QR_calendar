@@ -17,13 +17,14 @@
     android:weightSum="1">
 
     <LinearLayout
-        android:layout_height="55dp"
+        android:layout_height="40dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:weightSum="1">
         <TextView
             android:text="Title:"
             android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
             android:layout_width="66dp"
             android:layout_height="match_parent"
             android:gravity="center"/>
@@ -35,7 +36,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_height="55dp"
+        android:layout_height="40dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:weightSum="1">
@@ -43,6 +44,7 @@
     <TextView
         android:text="Date:"
         android:textColor="@color/colorPrimary"
+        android:textSize="15dp"
         android:layout_width="66dp"
         android:layout_height="match_parent"
         android:gravity="center"/>
@@ -52,9 +54,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewDate"
            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
         <TextView
             android:text="Location:"
             android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
             android:layout_width="66dp"
             android:layout_height="match_parent"
             android:gravity="center"/>
@@ -68,13 +77,14 @@
 
 
     <LinearLayout
-        android:layout_height="55dp"
+        android:layout_height="40dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:weightSum="1">
         <TextView
             android:text="Starttime:"
             android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
             android:layout_width="66dp"
             android:layout_height="match_parent"
             android:gravity="center"/>
@@ -83,9 +93,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewStarttime"
             />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
         <TextView
             android:text="Endtime:"
             android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
             android:layout_width="66dp"
             android:layout_height="match_parent"
             android:gravity="center"/>
@@ -97,21 +114,27 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_height="55dp"
+        android:layout_height="100dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:weightSum="1">
         <TextView
             android:text="Description:"
             android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
             android:layout_width="88dp"
             android:layout_height="match_parent"
             android:gravity="center"/>
         <TextView
 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/textViewDescription"
+            android:scrollbars = "vertical"
+            android:scrollHorizontally="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarStyle="insideInset"
+            android:overScrollMode="always"
             />
     </LinearLayout>
 
@@ -129,9 +152,9 @@
             android:background="@color/colorPrimary" />
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="249dp"
-        android:src="@drawable/ic_launcher"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/qrcode"
         android:id="@+id/imageView2"
         android:layout_gravity="center_horizontal" />
 
